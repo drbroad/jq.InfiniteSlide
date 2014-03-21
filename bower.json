@@ -4,25 +4,24 @@
   "version": "0.1.0",
   "author": "Marc Broad <mbroad@thepowertoprovoke.com>",
   "main": [
-    "jq.infiniteslide.js",
-    "jq.infiniteslide.css"
+    "www/scripts/plugins/jq.infiniteslide.js",
+    "www/css/jq.infiniteslide.css"
   ],
   "ignore": [
-    "assets",
+    "/assets",
     "node_modules",
     "vendor",
-    "Gruntfile.js",
     "gulpfile.js",
     "composer.json",
     "package.json",
     "www/*.html"
   ],
   "dependencies": {
-    "jquery": "~2.1.0",
-    "jqueryui": "~1.10.4",
-    "bootstrap": "~3.0.3"
+    "jquery": "~1.9.0",
+    "jqueryui": "~1.10.4"
   },
   "devDependencies": {
-    "holderjs": "~2.3.1"    
+    "holderjs": "~2.3.1",
+    "bootstrap": "~3.0.3"    
   }
 }

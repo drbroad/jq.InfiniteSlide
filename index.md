@@ -1,18 +1,21 @@
-Response: Flatfile Site
+Response - jqInfiniteSlider
 =========
-# jqInfiniteSlider
 
-Dillinger is a cloud-enabled HTML5 Markdown editor.
+A lite-weight js widget for inifinite looping of elements in both directions.
 
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable 
-> as possible. 
+## What does jq.InfiniteSlide.js do?
 
-## Description of lists
+> Out of a collection of images, create an infinite scrolling 
+> loop in both directions. Want to move forward 5 slides? no problem.
 
-  - Type some Markdown text in the left window
-  - See the HTML in the right
-  - Magic
+  - Programatic sliding
+  - Touch Friendly
+  - 
 
-
-
+## What needs to be added:
+  - Remove the coupling to images, both within variable names and jquery selectors
+  - Look at removing jquery dependency - pure js
+  - Add config for wrapper container and the inner container
+  - Create a less file for the css
+  - Destroy method
+  - Additional options based on responsive breakpoints

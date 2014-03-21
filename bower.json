@@ -15,7 +15,7 @@
     "gulpfile.js",
     "composer.json",
     "package.json",
-    "*.html"
+    "www/*.html"
   ],
   "dependencies": {
     "jquery": "~2.1.0",
@@ -23,6 +23,6 @@
     "bootstrap": "~3.0.3"
   },
   "devDependencies": {
-    "holderjs": "~2.3.1",    
+    "holderjs": "~2.3.1"    
   }
 }

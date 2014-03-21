@@ -8,9 +8,11 @@
     "jq.infiniteslide.css"
   ],
   "ignore": [
-    "examples",
+    "assets",
+    "node_modules",
+    "vendor",
     "Gruntfile.js",
-    "Gulpfile.js",
+    "gulpfile.js",
     "composer.json",
     "package.json",
     "*.html"
@@ -21,7 +23,6 @@
     "bootstrap": "~3.0.3"
   },
   "devDependencies": {
-    "holderjs": "~2.3.1",
-    
+    "holderjs": "~2.3.1",    
   }
 }

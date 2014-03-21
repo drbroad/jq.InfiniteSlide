@@ -4,7 +4,6 @@ Response - jqInfiniteSlider
 A lite-weight js widget for inifinite looping of elements in both directions.
 
 ## What does jq.InfiniteSlide.js do?
---------------------------------------
 
 > Out of a collection of images, create an infinite scrolling 
 > loop in both directions. Want to move forward 5 slides? no problem.
@@ -30,7 +29,6 @@ $( "#mainDrag").DragSlider('gotoSlide', 10);
 NOTE: If there are less elements than the slide number, it will simply loop round until 10 slides have pased. For example, if there are 7 slides and we are on the first slide - it will keepi sliding until it hits the 3rd element the second time.
 
 ## What needs to be added:
---------------------------------------
 Lots of things need to be added:
 
   - Remove the coupling to images, both within variable names and jquery selectors

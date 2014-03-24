@@ -4,17 +4,15 @@
   "version": "0.1.0",
   "author": "Marc Broad <mbroad@thepowertoprovoke.com>",
   "main": [
-    "www/scripts/plugins/jq.infiniteslide.js",
-    "www/css/jq.infiniteslide.css"
+    "/assets/scripts/plugins/jq.infiniteslide.js",
+    "assets/css/jq.infiniteslide.css"
   ],
   "ignore": [
-    "/assets",
     "node_modules",
     "vendor",
     "gulpfile.js",
     "composer.json",
-    "package.json",
-    "www/*.html"
+    "package.json"
   ],
   "dependencies": {
     "jquery": "~1.9.0",

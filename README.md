@@ -14,11 +14,15 @@ A lite-weight js widget for inifinite looping of elements in both directions.
 
 ## This isn't registered with Bower - how do i install?
 ```
-bower install drbroad/jqInfiniteSlide
+bower install drbroad/jqInfiniteSlide --save-dev
 ```
 
+## Where are the demos at?
+Good question - just fireup the `index.html` file in your browser and have a look (everything is minified)
+
 ## How do I get this running?
-First we need to register the widget with jQuery UI Bridge:
+First you need to add this to your page/build script/collection array etc...
+Second, we need to register the widget with jQuery UI Bridge:
 ```
 $.widget.bridge('DragSlider', DragSlider);
 ```
@@ -28,7 +32,7 @@ Lets say you want to initialise a slider on all containers with the `drag-slider
 $(".drag-slider").DragSlider();
 ```
 
-And if you want to move the slider to the 10th element from its start slide:
+And if you want to move a specific the slider to the 10th element from its start slide:
 ```
 $( "#mainDrag").DragSlider('gotoSlide', 10);
 ```

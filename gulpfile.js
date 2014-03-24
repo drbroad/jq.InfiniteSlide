@@ -1,3 +1,8 @@
+/* --------------------------------------------------------*/
+/*
+	REQUIRED PACKAGES
+*/
+/* --------------------------------------------------------*/
 var gulp		=	require('gulp');
 var gutil		=	require('gulp-util');
 var notify		=	require('gulp-notify');
@@ -14,33 +19,43 @@ var debug		=	require('gulp-debug');
 var exec		=	require('child_process').exec;
 var sys			=	require('sys');
  
- 
+
+
+/* --------------------------------------------------------*/
+/*
+	VARS
+*/
+/* --------------------------------------------------------*/ 
 // Where do you store your Less files?
-var lessDir = 'www/assets/less';
+var lessDir = 'assets/less';
 
 // Where do you store your JS files?
-var jsDir = 'www/assets/scripts';
+var jsDir = 'assets/scripts';
  
 // Which directory should Sass compile to?
-var targetCSSDir = 'www/assets/css';
+var targetCSSDir = 'assets/css';
  
 // Which directory should CoffeeScript compile to?
-var targetJSDir = 'www/assets/js';
+var targetJSDir = 'assets/js';
 
 // Where do you store your JS files?
-	var files 		= {
-			scripts	:	[
-							'www/assets/scripts/plugins/**/*.js', 
-							'www/assets/scripts/main.js', 
-						],
-			vendor	:	[
-							'vendor/jquery/dist/jquery.js',
-							'vendor/jqueryui/ui/jquery.ui.widget.js',						
-							'vendor/holderjs/holder.js'
-						],				
-	};
+var files 		= {
+		scripts	:	[
+						'assets/scripts/plugins/**/*.js', 
+						'assets/scripts/main.js', 
+					],
+		vendor	:	[
+						'vendor/jquery/dist/jquery.js',
+						'vendor/jqueryui/ui/jquery.ui.widget.js',						
+						'vendor/holderjs/holder.js'
+					],				
+};
 	 
- 
+/* --------------------------------------------------------*/
+/*
+	CSS COLLECTIONS
+*/
+/* --------------------------------------------------------*/	  
 // Compile Sass, autoprefix CSS3,
 // and save to target CSS directory
 gulp.task('css', function () {
@@ -52,29 +67,43 @@ gulp.task('css', function () {
 		.pipe(notify('CSS minified'))
 });
 
-// Handle JavaScript compilation
-gulp.task('js', ['lint'], function () {
-	return gulp.src(files.scripts)
-		.pipe(debug())
-		.pipe(concat('app.min.js'))
-		.pipe(uglify({outSourceMap: true}))
-		.pipe(gulp.dest(targetJSDir))		
-        .pipe(notify('JS minified'))
-        .on('error', gutil.log)	
-});
 
+/* --------------------------------------------------------*/
+/*
+	JS COLLECTIONS
+*/
+/* --------------------------------------------------------*/
+
+// Handle JavaScript compilation
+gulp.task('appJS', ['lint'],  function () {
+	var src		= files.scripts;
+	var name	= 'app.min.js';
+	return buildJS(src, name, 'App');
+});
 
 // Handle JavaScript compilation
 gulp.task('vendorJS', ['lint'],  function () {
-	return gulp.src(files.vendor)
-		.pipe(debug())
-		.pipe(concat('vendor.min.js'))
-		.pipe(uglify({outSourceMap: true}))
-		.pipe(gulp.dest(targetJSDir))		
-		.pipe(notify('Vendor JS minified'))
-		.on('error', gutil.log)	
+	var src		= files.vendor;
+	var name	= 'vendor.min.js';
+	return buildJS(src, name, 'Vendor');
 });
 
+// Handle the js
+var buildJS = function (src, name, type){
+	return gulp.src(src)		
+		.pipe(concat(name))
+		.pipe(uglify({outSourceMap: true}))
+		.pipe(gulp.dest(targetJSDir))		
+		.pipe(notify(type + ' JS minified'))
+		.on('error', gutil.log)		
+}
+
+
+/* --------------------------------------------------------*/
+/*
+	LINTING
+*/
+/* --------------------------------------------------------*/
 // Handle JavaScript linting
 gulp.task('lint', function() {
 	return gulp.src(jsDir + '/**/*.js')
@@ -85,12 +114,23 @@ gulp.task('lint', function() {
 		.pipe(notify('JS Linted'));
 }); 
 
+
+/* --------------------------------------------------------*/
+/*
+	WATCH TASKS
+*/
+/* --------------------------------------------------------*/
 // Keep an eye on Sass, Coffee, and PHP files for changes...
 gulp.task('watch', function () {	
 	gulp.watch(lessDir + '/**/*.less', ['css']);
-	gulp.watch(jsDir + '/**/*.js', ['lint', 'js']);
+	gulp.watch(jsDir + '/**/*.js', ['lint', 'appJS']);
 	gulp.watch('vendor/**/*.js', ['lint', 'vendorJS']);
 });
  
+/* --------------------------------------------------------*/
+/*
+	DEFAULT TASK
+*/
+/* --------------------------------------------------------*/
 // What tasks does running gulp trigger?
-gulp.task('default', ['lint', 'css', 'js','vendorJS', 'watch']);
+gulp.task('default', ['lint', 'css', 'appJS','vendorJS', 'watch']);

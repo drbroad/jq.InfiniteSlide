@@ -12,7 +12,7 @@ A lite-weight js widget for inifinite looping of elements in both directions.
   - Touch Friendly
   - Infinite looping of elements
 
-## This isn't registered with Bower - how do i install?
+## This isn't registered with Bower - how do I install?
 ```
 bower install drbroad/jqInfiniteSlide --save-dev
 ```
@@ -36,6 +36,10 @@ And if you want to move a specific the slider to the 10th element from its start
 ```
 $( "#mainDrag").DragSlider('gotoSlide', 10);
 ```
+
+## How do I specify a drag item?
+Within the `drag-inner` container you can have a mixture or elements: span, div, img. As long as each one has a class of `drag-item` everything will work smooth
+
 NOTE: If there are less elements than the slide number, it will simply loop round until 10 slides have pased. For example, if there are 7 slides and we are on the first slide - it will keepi sliding until it hits the 3rd element the second time.
 
 ## What needs to be added:

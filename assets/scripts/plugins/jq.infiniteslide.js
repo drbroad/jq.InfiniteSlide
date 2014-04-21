@@ -59,7 +59,7 @@ DragSlider.prototype = {
 
 		// generate the calculations for left, width of all the contained elements
 		$draggable.css({'left': 0});
-		$draggable.find('img').each(function(){
+		$draggable.find('.drag-item').each(function(){
 			var $this	=	$(this);
 			drag_width	+=	$this.outerWidth();
 		})
@@ -85,22 +85,22 @@ DragSlider.prototype = {
 					var newPos 		=	startOffset + ( curX - startX );
 
 					// this needs tidying up in order to remove implication that these are all images
-					var $img_first 	=	$drag.find('img:first');
+					var $img_first 	=	$drag.find('.drag-item:first');
 					var first_w 	=	$img_first.outerWidth();
-					var $img_last 	=	$drag.find('img:last');
+					var $img_last 	=	$drag.find('.drag-itemimg:last');
 					var last_w 		=	$img_last.outerWidth();
 
 					// am i moving to the left, and has my first element moved offscreen...
 					if(newPos < ( 0 - first_w ) ){
 						newPos = 0;
 						startX -= first_w;
-						$drag.append($drag.find('img:first'));
+						$drag.append($drag.find('.drag-item:first'));
 
 					// am i moving to the right, and has my last element moved offscreen...						
 					}else if(newPos > 0){
 						newPos -= last_w;
 						startX += last_w;
-						$drag.prepend($drag.find('img:last'));
+						$drag.prepend($drag.find('.drag-item:last'));
 					}
 
 					// set the offset based on any new calculations
@@ -121,7 +121,7 @@ DragSlider.prototype = {
 	_onSlide: function(now, fx){
 		var self 		= 	 this;
 		var $drag 		=	 $(fx.elem);
-		var $img_first 	=	 $drag.find('img:first');
+		var $img_first 	=	 $drag.find('.drag-item:first');
 		var first_w 	=	 $img_first.outerWidth();
 		var pad_left 	=	 parseInt($drag.css("padding-left"));
 		var width 		=	 $drag.outerWidth();
@@ -142,9 +142,9 @@ DragSlider.prototype = {
 		var self	=	this;
 		var $el 	= 	$(self.element)
 		var $inner 	= 	$el.find('.drag-inner');
-		var $img 	= 	$el.find('.drag-inner img');
+		var $img 	= 	$el.find('.drag-inner .drag-item');
 		var index 	= 	slide - 1;
-		var left 	= 	(!slide) ? 0 : -1 * $inner.find('img:eq(' + index + ')').offset().left + $inner.offset().left;
+		var left 	= 	(!slide) ? 0 : -1 * $inner.find('.drag-item:eq(' + index + ')').offset().left + $inner.offset().left;
 
 
 		// TODO return false if start pos == end pos
@@ -203,20 +203,20 @@ DragSlider.prototype = {
 	},
 
 	_onStart: function (){
-		console.log('start...');
+		//console.log('start...');
 	},
 	_onStop: function (){
-		console.log('stop...');
+		//console.log('stop...');
 	},
 
 	// notice no underscore is used for public methods
 	publicFunction: function(){
-		console.log('public function');
+		//console.log('public function');
 	},
 
 	// underscores are used for private methods
 	_privateFunction: function(){
-		console.log('private function');
+		//console.log('private function');
 	}
 };
 

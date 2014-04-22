@@ -59,4 +59,5 @@ Lots of things need to be added:
   - Add pub/sub options
   - Fix the dir structure of the bower install
   - Set a tag,  make a dev branch
+  - add some preset styles
 

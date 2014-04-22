@@ -49,6 +49,7 @@ DragSlider.prototype = {
 		var self		=	this;
 
 		// set the elements once, avoid multiple lookups. 
+		console.log(self);
 		self.option( 'drag-wrapper', $(this.element) );
 		self.option( 'draggable', $(this.element).find('.drag-inner') );
 
@@ -61,7 +62,7 @@ DragSlider.prototype = {
 		$draggable.css({'left': 0});
 		$draggable.find('.drag-item').each(function(){
 			var $this	=	$(this);
-			drag_width	+=	$this.outerWidth();
+			drag_width	+=	$this.outerWidth(true);
 		})
 
 		// set the inline styles for width of all the contained elements
@@ -87,7 +88,7 @@ DragSlider.prototype = {
 					// this needs tidying up in order to remove implication that these are all images
 					var $img_first 	=	$drag.find('.drag-item:first');
 					var first_w 	=	$img_first.outerWidth();
-					var $img_last 	=	$drag.find('.drag-itemimg:last');
+					var $img_last 	=	$drag.find('.drag-item:last');
 					var last_w 		=	$img_last.outerWidth();
 
 					// am i moving to the left, and has my first element moved offscreen...

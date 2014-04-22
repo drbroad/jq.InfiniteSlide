@@ -5,7 +5,7 @@
 	// Drag Slider Demo
 
 	$.widget.bridge('DragSlider', DragSlider);
-	$(".drag-slider").DragSlider({'prevPos' : 0});
+	$(".drag-slider").DragSlider();
 
 	$(".j-slide-top").on('click', function(){
 		$( "#mainDrag").DragSlider('gotoSlide', 10);

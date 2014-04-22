@@ -21,7 +21,7 @@
 // options: an object of configuration options
 // element: the DOM element the instance was created on
 var DragSlider = function( options,  element ){
-	this.options = options;
+	this.options = options || {};
 	this.element = element;
 	this._init();
 };
